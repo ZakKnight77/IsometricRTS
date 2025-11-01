@@ -272,4 +272,5 @@ tile_set = SubResource("TileSet_gr30u")
 [node name="Unit" parent="Units" instance=ExtResource("2_gr30u")]
 position = Vector2(77, -70)
 
-[node name="MovingCamera" parent="Units/Unit" instance=ExtResource("3_no0eo")]
+[node name="MovingCamera" parent="." instance=ExtResource("3_no0eo")]
+position = Vector2(77, -70)

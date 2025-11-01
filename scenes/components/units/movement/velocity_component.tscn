@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://berbs08jej0rf"]
+
+[ext_resource type="Script" uid="uid://crtfieksjbde5" path="res://scenes/components/units/movement/velocity_component.gd" id="1_dv185"]
+
+[node name="VelocityComponent" type="Node2D"]
+script = ExtResource("1_dv185")

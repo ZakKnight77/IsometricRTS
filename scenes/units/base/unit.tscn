@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://jij078ncnb01"]
+[gd_scene load_steps=8 format=3 uid="uid://jij078ncnb01"]
 
 [ext_resource type="Texture2D" uid="uid://tmkvw7t4yyqn" path="res://graphics/entities/Entities.png" id="1_bok0f"]
+[ext_resource type="PackedScene" uid="uid://berbs08jej0rf" path="res://scenes/components/units/movement/velocity_component.tscn" id="2_qjoa1"]
+[ext_resource type="PackedScene" uid="uid://c36kjl4o4c0hf" path="res://scenes/components/units/state_machine/state_machine.tscn" id="3_k34bp"]
+[ext_resource type="Script" uid="uid://w1paa147ksot" path="res://scenes/components/units/state_machine/state_machine.gd" id="4_bytcv"]
+[ext_resource type="PackedScene" uid="uid://brgnum4jm6vy" path="res://scenes/components/units/state_machine/states/idle_state.tscn" id="5_vnj34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bok0f"]
 size = Vector2(10, 11)
@@ -37,7 +41,16 @@ debug_color = Color(0.9874789, 0, 0.3175734, 0.41960785)
 
 [node name="Movement" type="Node2D" parent="Components"]
 
+[node name="VelocityComponent" parent="Components/Movement" node_paths=PackedStringArray("_unit") instance=ExtResource("2_qjoa1")]
+_unit = NodePath("../../..")
+
 [node name="Stats" type="Node" parent="Components"]
+
+[node name="StateMachine" parent="." instance=ExtResource("3_k34bp")]
+script = ExtResource("4_bytcv")
+_initial_state = "Idle"
+
+[node name="Idle" parent="StateMachine" instance=ExtResource("5_vnj34")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.75)
