@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://jij078ncnb01"]
+
+[ext_resource type="Texture2D" uid="uid://tmkvw7t4yyqn" path="res://graphics/entities/Entities.png" id="1_bok0f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bok0f"]
+size = Vector2(10, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1h5n"]
+size = Vector2(10, 11.5)
+
+[node name="Unit" type="CharacterBody2D"]
+collision_mask = 8
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="Visual" type="Node2D" parent="Components"]
+
+[node name="SpriteHandler" type="Node2D" parent="Components/Visual"]
+
+[node name="Idle" type="Sprite2D" parent="Components/Visual/SpriteHandler"]
+position = Vector2(-8, -9)
+texture = ExtResource("1_bok0f")
+centered = false
+hframes = 4
+vframes = 33
+
+[node name="Combat" type="Node2D" parent="Components"]
+
+[node name="Hitbox" type="Area2D" parent="Components/Combat"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/Combat/Hitbox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_bok0f")
+debug_color = Color(0.9874789, 0, 0.3175734, 0.41960785)
+
+[node name="Movement" type="Node2D" parent="Components"]
+
+[node name="Stats" type="Node" parent="Components"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.75)
+shape = SubResource("RectangleShape2D_n1h5n")
